@@ -1,0 +1,75 @@
+spring:
+  application:
+    name: api-gateway
+server:
+  port: 9000
+
+train:
+  service:
+    url: http://localhost:8080
+
+# swagger
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: Train Service
+        url: /aggregate/train-service/v3/api-docs
+  api-docs:
+    path: /api-docs
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+  observations:
+    key-values:
+      application: api-gateway
+  tracing:
+    sampling:
+      probability: 1.0
+
+# Resilience4j
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        minimum-number-of-calls: 5
+  timeLimiter:
+    configs:
+      default:
+        timeoutDuration: 3s
+  retry:
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration: 5s
+
+loki:
+  url: http://localhost:3100/loki/api/v1/push
+
