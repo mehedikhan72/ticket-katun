@@ -1,10 +1,10 @@
-name: Gateway Deployment
+name: Notification Deployment
 
 on:
   push:
     branches: [ master ]
     paths:
-      - "/train-service/**"
+      - "/notification-service/**"
 
   workflow_dispatch:
     inputs:
@@ -15,7 +15,7 @@ on:
 
 env:
   REGISTRY: "registry.digitalocean.com/ticket-katun"
-  GATEWAY_IMAGE_NAME: "tkt-train-service"
+  GATEWAY_IMAGE_NAME: "tkt-notification-service"
 
 jobs:
   cleanup:
@@ -63,9 +63,9 @@ jobs:
       - name: Apply Deployment YAML
         run: |
           # Update the image tag in the deployment YAML file
-          sed -i "s|image: .*|image: registry.digitalocean.com/ticket-katun/tkt-train-service:${{ github.sha | head -c7 }}|g" k8s/manifests/applications/train-service.yml
-          kubectl apply -f k8s/manifests/applications/train-service.yml
+          sed -i "s|image: .*|image: registry.digitalocean.com/ticket-katun/tkt-notification-service:${{ github.sha | head -c7 }}|g" k8s/manifests/applications/notification-service.yml
+          kubectl apply -f k8s/manifests/applications/notification-service.yml
 
       - name: Kubernetes rollout restart
         run: |
-          kubectl -n default rollout restart deployment train-service
+          kubectl -n default rollout restart deployment notification-service

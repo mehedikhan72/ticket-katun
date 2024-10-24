@@ -1,0 +1,31 @@
+name: Zookeeper Deployment
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'k8s/manifests/infrastructure/zookeeper.yml'  # Adjust if necessary
+
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Zookeeper Image Version'
+        required: true
+        default: 'latest'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to kubernetes
+        run: doctl kubernetes cluster kubeconfig save ${{ secrets.CLUSTER_ID }}
+
+      - name: Apply Deployment YAML
+        run: |
+          kubectl apply -f k8s/manifests/infrastructure/zookeeper.yml
+
+      - name: Kubernetes rollout restart
+        run: |
+          kubectl -n default rollout restart deployment zookeeper
