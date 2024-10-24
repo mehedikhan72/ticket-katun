@@ -79,7 +79,7 @@ jobs:
           sed -i "s|image: .*|image: registry.digitalocean.com/ticket-katun/tkt-notification-service:${SHORT_SHA}|g" ${GITHUB_WORKSPACE}/k8s/manifests/applications/notification-service.yml
     
           # Apply the Kubernetes manifest ..
-          kubectl apply -f k8s/manifests/applications/notification-service.yml
+          kubectl apply -f ${GITHUB_WORKSPACE}/k8s/manifests/applications/notification-service.yml
 
 
       - name: Kubernetes rollout restart
