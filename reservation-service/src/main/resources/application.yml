@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: reservation-service
+  datasource:
+    url: none
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: reservationService
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        spring:
+          deserializer:
+            key:
+              delegate:
+                class: org.apache.kafka.common.serialization.StringDeserializer
+            value:
+              delegate:
+                class: io.confluent.kafka.serializers.KafkaAvroDeserializer
+        schema:
+          registry:
+            url: http://localhost:8085
+        specific:
+          avro:
+            reader: true
+
+server:
+  port: 8081
