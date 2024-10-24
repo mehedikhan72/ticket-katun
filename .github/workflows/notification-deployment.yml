@@ -76,7 +76,7 @@ jobs:
           SHORT_SHA=$(echo "${GITHUB_SHA}" | head -c7)
 
           # updating image tag in yaml file
-          sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-notification-service:'${SHORT_SHA}'|' notification-service.yml
+          sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-notification-service:'${SHORT_SHA}'|' ${GITHUB_WORKSPACE}/notification-service.yml
           
           # Apply the Kubernetes manifest ..
           kubectl apply -f notification-service.yml
