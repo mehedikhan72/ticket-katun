@@ -2,9 +2,9 @@ spring:
   application:
     name: train-service
   datasource:
-    url: jdbc:postgresql://postgres:5432/ticket-katun
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://ticket-katun-do-user-15328471-0.d.db.ondigitalocean.com:25060/defaultdb?sslmode=require
+    username: doadmin
+    password: AVNS_KCQV1b1FT-LkRIoQKpy
 
   jpa:
     hibernate:

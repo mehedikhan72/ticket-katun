@@ -1,6 +1,120 @@
 version: '3.8'
 
 services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "9000:9000"
+    depends_on:
+      - zookeeper
+      - broker
+      - schema-registry
+      - kafka-ui
+      - keycloak
+      - keycloak-mysql
+      - grafana
+      - tempo
+      - prometheus
+      - loki
+
+  train-service:
+    build: ./train-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - zookeeper
+      - broker
+      - schema-registry
+      - kafka-ui
+      - keycloak
+      - keycloak-mysql
+      - grafana
+      - tempo
+      - prometheus
+      - loki
+      - postgres
+
+  reservation-service:
+    build: ./reservation-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - zookeeper
+      - broker
+      - schema-registry
+      - kafka-ui
+      - keycloak
+      - keycloak-mysql
+      - grafana
+      - tempo
+      - prometheus
+      - loki
+
+  payment-service:
+    build: ./payment-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - zookeeper
+      - broker
+      - schema-registry
+      - kafka-ui
+      - keycloak
+      - keycloak-mysql
+      - grafana
+      - tempo
+      - prometheus
+      - loki
+
+  otp-service:
+    build: ./otp-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - zookeeper
+      - broker
+      - schema-registry
+      - kafka-ui
+      - keycloak
+      - keycloak-mysql
+      - grafana
+      - tempo
+      - prometheus
+      - loki
+
+  notification-service:
+    build: ./notification-service
+    ports:
+      - "8084:8084"
+    depends_on:
+      - zookeeper
+      - broker
+      - schema-registry
+      - kafka-ui
+      - keycloak
+      - keycloak-mysql
+      - grafana
+      - tempo
+      - prometheus
+      - loki
+
+  worker-service:
+    build: ./worker-service
+    ports:
+      - "8087:8087"
+    depends_on:
+      - zookeeper
+      - broker
+      - schema-registry
+      - kafka-ui
+      - keycloak
+      - keycloak-mysql
+      - grafana
+      - tempo
+      - prometheus
+      - loki
+      - postgres
+
   postgres:
     image: postgres:latest
     container_name: postgress_db

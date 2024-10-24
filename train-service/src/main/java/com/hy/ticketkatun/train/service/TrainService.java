@@ -71,7 +71,7 @@ public class TrainService {
         }
 
         if(seat.get().getIsBooked()) {
-            throw new RuntimeException("Seat is already booked");
+            return "Seat is already booked.";
         }
 
         // todo: check redis cache for seat availability
@@ -85,6 +85,6 @@ public class TrainService {
 
         // todo: update redis cache for seat availability
 
-        return "Forwarded to reservation service";
+        return "Forwarded to reservation service.";
     }
 }
