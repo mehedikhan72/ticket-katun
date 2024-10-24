@@ -1,0 +1,9 @@
+{
+  "type": "record",
+  "name": "PaymentInitiatedEvent",
+  "namespace": "com.hy.ticketkatun.reservation.event",
+  "fields": [
+    { "name": "seatNumber", "type": "string" },
+    { "name": "trainName", "type": "string" }
+  ]
+}

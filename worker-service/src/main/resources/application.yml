@@ -1,19 +1,15 @@
 spring:
   application:
-    name: reservation-service
+    name: worker-service
   datasource:
-    url: none
+    datasource:
+      url: jdbc:postgresql://localhost:5432/ticket-katun
+      username: postgres
+      password: postgres
   kafka:
     bootstrap-servers: localhost:9092
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
-      properties:
-        schema:
-          registry:
-            url: http://localhost:8085
     consumer:
-      group-id: reservationService
+      group-id: workerService
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
       properties:
@@ -33,4 +29,4 @@ spring:
             reader: true
 
 server:
-  port: 8081
+  port: 8085
