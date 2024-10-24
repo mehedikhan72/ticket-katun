@@ -2,7 +2,7 @@ package com.hy.ticketkatun.train.service;
 
 import com.hy.ticketkatun.train.dto.SeatResponse;
 import com.hy.ticketkatun.train.dto.TrainResponse;
-import com.hy.ticketkatun.train.event.TicketBookedEvent;
+import com.hy.ticketkatun.reservation.event.TicketBookedEvent;
 import com.hy.ticketkatun.train.model.Train;
 import com.hy.ticketkatun.train.repository.SeatRepository;
 import com.hy.ticketkatun.train.repository.TrainRepository;

@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.hy.ticketkatun.train.event;
+package com.hy.ticketkatun.reservation.event;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.util.Utf8;
@@ -13,10 +13,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 1986881521779218963L;
+  private static final long serialVersionUID = -7097615330108338419L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TicketBookedEvent\",\"namespace\":\"com.hy.ticketkatun.train.event\",\"fields\":[{\"name\":\"seatNumber\",\"type\":\"string\"},{\"name\":\"trainName\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TicketBookedEvent\",\"namespace\":\"com.hy.ticketkatun.reservation.event\",\"fields\":[{\"name\":\"seatNumber\",\"type\":\"string\"},{\"name\":\"trainName\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -157,8 +157,8 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
    * Creates a new TicketBookedEvent RecordBuilder.
    * @return A new TicketBookedEvent RecordBuilder
    */
-  public static com.hy.ticketkatun.train.event.TicketBookedEvent.Builder newBuilder() {
-    return new com.hy.ticketkatun.train.event.TicketBookedEvent.Builder();
+  public static com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder newBuilder() {
+    return new com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder();
   }
 
   /**
@@ -166,11 +166,11 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
    * @param other The existing builder to copy.
    * @return A new TicketBookedEvent RecordBuilder
    */
-  public static com.hy.ticketkatun.train.event.TicketBookedEvent.Builder newBuilder(com.hy.ticketkatun.train.event.TicketBookedEvent.Builder other) {
+  public static com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder newBuilder(com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder other) {
     if (other == null) {
-      return new com.hy.ticketkatun.train.event.TicketBookedEvent.Builder();
+      return new com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder();
     } else {
-      return new com.hy.ticketkatun.train.event.TicketBookedEvent.Builder(other);
+      return new com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder(other);
     }
   }
 
@@ -179,11 +179,11 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
    * @param other The existing instance to copy.
    * @return A new TicketBookedEvent RecordBuilder
    */
-  public static com.hy.ticketkatun.train.event.TicketBookedEvent.Builder newBuilder(com.hy.ticketkatun.train.event.TicketBookedEvent other) {
+  public static com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder newBuilder(com.hy.ticketkatun.reservation.event.TicketBookedEvent other) {
     if (other == null) {
-      return new com.hy.ticketkatun.train.event.TicketBookedEvent.Builder();
+      return new com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder();
     } else {
-      return new com.hy.ticketkatun.train.event.TicketBookedEvent.Builder(other);
+      return new com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder(other);
     }
   }
 
@@ -206,7 +206,7 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.hy.ticketkatun.train.event.TicketBookedEvent.Builder other) {
+    private Builder(com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.seatNumber)) {
         this.seatNumber = data().deepCopy(fields()[0].schema(), other.seatNumber);
@@ -222,7 +222,7 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
      * Creates a Builder by copying an existing TicketBookedEvent instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.hy.ticketkatun.train.event.TicketBookedEvent other) {
+    private Builder(com.hy.ticketkatun.reservation.event.TicketBookedEvent other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.seatNumber)) {
         this.seatNumber = data().deepCopy(fields()[0].schema(), other.seatNumber);
@@ -248,7 +248,7 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'seatNumber'.
       * @return This builder.
       */
-    public com.hy.ticketkatun.train.event.TicketBookedEvent.Builder setSeatNumber(java.lang.CharSequence value) {
+    public com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder setSeatNumber(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.seatNumber = value;
       fieldSetFlags()[0] = true;
@@ -268,7 +268,7 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'seatNumber' field.
       * @return This builder.
       */
-    public com.hy.ticketkatun.train.event.TicketBookedEvent.Builder clearSeatNumber() {
+    public com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder clearSeatNumber() {
       seatNumber = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -288,7 +288,7 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'trainName'.
       * @return This builder.
       */
-    public com.hy.ticketkatun.train.event.TicketBookedEvent.Builder setTrainName(java.lang.CharSequence value) {
+    public com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder setTrainName(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.trainName = value;
       fieldSetFlags()[1] = true;
@@ -308,7 +308,7 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'trainName' field.
       * @return This builder.
       */
-    public com.hy.ticketkatun.train.event.TicketBookedEvent.Builder clearTrainName() {
+    public com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder clearTrainName() {
       trainName = null;
       fieldSetFlags()[1] = false;
       return this;
