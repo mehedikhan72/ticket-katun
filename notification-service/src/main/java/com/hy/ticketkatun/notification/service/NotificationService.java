@@ -16,6 +16,6 @@ public class NotificationService {
     public void listen(BookingCompletedEvent bookingCompletedEvent) {
         log.info("Notification sent for booking completed event: {}", bookingCompletedEvent);
 
-        // Mocking notification.........
+        // Mocking notification..........
     }
 }

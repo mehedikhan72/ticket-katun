@@ -15,7 +15,7 @@ on:
 
 env:
   REGISTRY: "registry.digitalocean.com/ticket-katun"
-  GATEWAY_IMAGE_NAME: "tkt-reservation-service"
+  IMAGE_NAME: "tkt-reservation-service"
 
 jobs:
   cleanup:
