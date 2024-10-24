@@ -40,7 +40,6 @@ spring:
 server:
   port: 8087 # schema-registry in 8085
 
-
 # Observability
 management:
   endpoints:
@@ -55,26 +54,20 @@ management:
             requests: true
   observations:
     key-values:
-      application: worker-service
+      application: train-service
   tracing:
     sampling:
       probability: 1.0
-
-loki:
-  url: http://loki:3100/loki/api/v1/push
-
-# Actuator
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
   endpoint:
     health:
       show-details: always
   health:
     circuitbreakers:
       enabled: true
+
+
+loki:
+  url: http://loki:3100/loki/api/v1/push
 
 # Resilience4j
 resilience4j:

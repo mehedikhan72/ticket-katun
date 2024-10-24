@@ -6,7 +6,7 @@ server:
 
 train:
   service:
-    url: http://localhost:8080
+    url: http://train-service:8080
 
 # swagger
 springdoc:
@@ -71,5 +71,5 @@ resilience4j:
         wait-duration: 5s
 
 loki:
-  url: http://localhost:3100/loki/api/v1/push
+  url: http://loki:3100/loki/api/v1/push
 
