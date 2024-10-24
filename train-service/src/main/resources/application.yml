@@ -2,9 +2,9 @@ spring:
   application:
     name: train-service
   datasource:
-    url: jdbc:postgresql://ticket-katun-do-user-15328471-0.d.db.ondigitalocean.com:25060/defaultdb?sslmode=require
-    username: doadmin
-    password: AVNS_KCQV1b1FT-LkRIoQKpy
+    url: jdbc:postgresql://postgres:5432/ticket-katun
+    username: postgres
+    password: postgres
 
   jpa:
     hibernate:
@@ -31,60 +31,60 @@ spring:
 server:
   port: 8080
 
-# reservation:
-#   url: http://localhost:8081
+reservation:
+   url: http://localhost:8081
 
-## Observability
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: health, info, metrics, prometheus
-#  metrics:
-#    distribution:
-#      percentiles-histogram:
-#        http:
-#          server:
-#            requests: true
-#  observations:
-#    key-values:
-#      application: train-service
-#  tracing:
-#    sampling:
-#      probability: 1.0
-#  endpoint:
-#    health:
-#      show-details: always
-#  health:
-#    circuitbreakers:
-#      enabled: true
-#
-#loki:
-#  url: http://loki:3100/loki/api/v1/push
-#
-#
-## Resilience4j
-#resilience4j:
-#  circuitbreaker:
-#    instances:
-#      inventory:
-#        registerHealthIndicator: true
-#        event-consumer-buffer-size: 10
-#        slidingWindowType: COUNT_BASED
-#        slidingWindowSize: 5
-#        failureRateThreshold: 50
-#        waitDurationInOpenState: 5s
-#        permittedNumberOfCallsInHalfOpenState: 3
-#        automaticTransitionFromOpenToHalfOpenEnabled: true
-#        minimum-number-of-calls: 5
-#
-#  timelimiter:
-#    instances:
-#      inventory:
-#        timeout-duration: 3s
-#
-#  retry:
-#    instances:
-#      inventory:
-#        max-attempts: 3
-#        wait-duration: 5s
+# Observability
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, prometheus
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+  observations:
+    key-values:
+      application: train-service
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+
+loki:
+  url: http://loki:3100/loki/api/v1/push
+
+
+# Resilience4j
+resilience4j:
+  circuitbreaker:
+    instances:
+      inventory:
+        registerHealthIndicator: true
+        event-consumer-buffer-size: 10
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        minimum-number-of-calls: 5
+
+  timelimiter:
+    instances:
+      inventory:
+        timeout-duration: 3s
+
+  retry:
+    instances:
+      inventory:
+        max-attempts: 3
+        wait-duration: 5s

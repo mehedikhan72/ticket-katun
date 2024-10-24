@@ -4,12 +4,12 @@ kind: ConfigMap
 metadata:
   name: common-config
 data:
-  LOKI_URL: "http://loki.default.svc.cluster.local:3100/loki/api/v1/push"
-  MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: "http://tempo.default.svc.cluster.local:9411"
-  TRAIN_SERVICE_URL: "http://product-service.default.svc.cluster.local:8080"
-  RESERVATION_SERVICE_URL: "http://order-service.default.svc.cluster.local:8081"
-  PAYMENT_SERVICE_URL: "http://inventory-service.default.svc.cluster.local:8082"
-  OTP_SERVICE_URL: "http://inventory-service.default.svc.cluster.local:8083"
-  NOTIFICATION_SERVICE_URL: "http://notification-service.default.svc.cluster.local:8084"
-  WORKER_SERVICE_URL: "http://notification-service.default.svc.cluster.local:8087"
-  SPRING_KAFKA_BOOTSTRAP-SERVERS: "broker.default.svc.cluster.local:29092"
+  LOKI_URL: "http://loki:3100/loki/api/v1/push"
+  MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: "http://tempo:9411"
+  TRAIN_SERVICE_URL: "http://train-service:8080"
+  RESERVATION_SERVICE_URL: "http://reservation-service:8081"
+  PAYMENT_SERVICE_URL: "http://payment-service:8082"
+  OTP_SERVICE_URL: "http://otp-service:8083"
+  NOTIFICATION_SERVICE_URL: "http://notification-service:8084"
+  WORKER_SERVICE_URL: "http://worker-service:8087"
+  SPRING_KAFKA_BOOTSTRAP-SERVERS: "broker:29092"
