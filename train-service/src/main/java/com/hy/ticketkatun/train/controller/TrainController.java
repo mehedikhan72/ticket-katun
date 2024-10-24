@@ -21,8 +21,13 @@ public class TrainController {
         return trainService.getAllTrains();
     }
 
-    @GetMapping("/seats/{trainName}") // Endpoint to get seats by train name
+    @GetMapping("/seats/{trainName}")
     public ResponseEntity<?> getSeatsOfATrain(@PathVariable String trainName) {
         return ResponseEntity.ok(trainService.getSeatsOfATrain(trainName));
+    }
+
+    @PostMapping("/book/{trainName}/{seatNumber}")
+    public ResponseEntity<?> bookASeat(@PathVariable String trainName, @PathVariable String seatNumber) {
+        return ResponseEntity.ok(trainService.bookASeat(trainName, seatNumber));
     }
 }

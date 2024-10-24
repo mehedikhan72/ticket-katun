@@ -1,11 +1,10 @@
 spring:
+  application:
+    name: train-service
   datasource:
     url: jdbc:postgresql://localhost:5432/ticket-katun
     username: postgres
     password: postgres
-
-  application:
-    name: product-service
 
   jpa:
     hibernate:
@@ -17,5 +16,20 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+  kafka:
+    bootstrap-servers: localhost:9092
+    template:
+      default-topic: ticket-booked
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      properties:
+        schema:
+          registry:
+            url: http://localhost:8085
+
 server:
   port: 8080
+
+reservation:
+  url: http://localhost:8081
