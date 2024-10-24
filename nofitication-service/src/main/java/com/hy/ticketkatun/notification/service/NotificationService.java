@@ -1,4 +1,4 @@
-package com.hy.ticketkatun.service;
+package com.hy.ticketkatun.notification.service;
 
 import com.hy.ticketkatun.otp.event.BookingCompletedEvent;
 import lombok.RequiredArgsConstructor;

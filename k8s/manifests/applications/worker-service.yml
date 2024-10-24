@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker-service
+  template:
+    metadata:
+      labels:
+        app: worker-service
+    spec:
+      containers:
+        - name: worker-service
+          image: shakshor/tkt-worker-service:latest
+          env:
+            - name: LOKI_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: LOKI_URL
+                  name: common-config
+            - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  key: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+                  name: common-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: worker-service
+spec:
+  selector:
+    app: worker-service
+  ports:
+    - protocol: TCP
+      port: 8087
+      targetPort: 8087
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: worker-service-config
+data:
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://postgres.default.svc.cluster.local:5432/ticket-katun"
