@@ -62,9 +62,15 @@ jobs:
 
       - name: Apply Deployment YAML
         run: |
+          # Extract the first 7 characters of the GitHub SHA
+          SHORT_SHA=$(echo "${GITHUB_SHA}" | head -c7)
+          
           # Update the image tag in the deployment YAML file
-          sed -i "s|image: .*|image: registry.digitalocean.com/ticket-katun/tkt-notification-service:${{ github.sha | head -c7 }}|g" k8s/manifests/applications/notification-service.yml
-          kubectl apply -f k8s/manifests/applications/notification-service.yml
+          sed -i "s|image: .*|image: registry.digitalocean.com/ticket-katun/  tkt-notification-service:${SHORT_SHA}|g" k8s/manifests/applications/  notification-service.yml
+    
+    # Apply the Kubernetes manifest
+    kubectl apply -f k8s/manifests/applications/notification-service.yml
+
 
       - name: Kubernetes rollout restart
         run: |
