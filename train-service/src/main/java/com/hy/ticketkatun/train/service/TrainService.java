@@ -3,6 +3,7 @@ package com.hy.ticketkatun.train.service;
 import com.hy.ticketkatun.train.dto.SeatResponse;
 import com.hy.ticketkatun.train.dto.TrainResponse;
 import com.hy.ticketkatun.reservation.event.TicketBookedEvent;
+import com.hy.ticketkatun.train.model.Seat;
 import com.hy.ticketkatun.train.model.Train;
 import com.hy.ticketkatun.train.repository.SeatRepository;
 import com.hy.ticketkatun.train.repository.TrainRepository;
@@ -58,6 +59,21 @@ public class TrainService {
     }
 
     public String bookASeat(String trainName, String seatNumber) {
+        // checking is seat is available in the db.
+        Optional<Train> train = trainRepository.findByName(trainName);
+        if(train.isEmpty()) {
+            throw new RuntimeException("Train not found");
+        }
+
+        Optional<Seat> seat = seatRepository.findByTrainIdAndSeatNumber(train.get().getId(), seatNumber);
+        if(seat.isEmpty()) {
+            throw new RuntimeException("Seat not found");
+        }
+
+        if(seat.get().getIsBooked()) {
+            throw new RuntimeException("Seat is already booked");
+        }
+
         // todo: check redis cache for seat availability
 
         // book
@@ -66,6 +82,8 @@ public class TrainService {
         log.info("Start- Sending ticketBookedEvent {} to Kafka Topic", ticketBookedEvent);
         kafkaTemplate.send("ticket-booked", ticketBookedEvent);
         log.info("End- Sending ticketBookedEvent {} to Kafka Topic", ticketBookedEvent);
+
+        // todo: update redis cache for seat availability
 
         return "Forwarded to reservation service";
     }

@@ -2,5 +2,6 @@
 .env
 .env.local
 ./volume-data/**
+/volume-data/**
 
 **/target/**
