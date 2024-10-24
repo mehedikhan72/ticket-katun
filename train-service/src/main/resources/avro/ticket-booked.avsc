@@ -3,7 +3,7 @@
   "name": "TicketBookedEvent",
   "namespace": "com.hy.ticketkatun.reservation.event",
   "fields": [
-    { "name": "seatNumber", "type": "string" },
-    { "name": "trainName", "type": "string" }
+    { "name": "trainName", "type": "string" },
+    { "name": "seatNumber", "type": "string" }
   ]
 }

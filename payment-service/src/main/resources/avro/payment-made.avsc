@@ -3,7 +3,7 @@
    "name": "PaymentMadeEvent",
    "namespace": "com.hy.ticketkatun.otp.event",
    "fields": [
-     { "name": "seatNumber", "type": "string" },
-     { "name": "trainName", "type": "string" }
+    { "name": "trainName", "type": "string" },
+    { "name": "seatNumber", "type": "string" }
    ]
  }

@@ -13,10 +13,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -7097615330108338419L;
+  private static final long serialVersionUID = -1206920301027941778L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TicketBookedEvent\",\"namespace\":\"com.hy.ticketkatun.reservation.event\",\"fields\":[{\"name\":\"seatNumber\",\"type\":\"string\"},{\"name\":\"trainName\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TicketBookedEvent\",\"namespace\":\"com.hy.ticketkatun.reservation.event\",\"fields\":[{\"name\":\"trainName\",\"type\":\"string\"},{\"name\":\"seatNumber\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -72,8 +72,8 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
     return DECODER.decode(b);
   }
 
-  private java.lang.CharSequence seatNumber;
   private java.lang.CharSequence trainName;
+  private java.lang.CharSequence seatNumber;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -84,12 +84,12 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
 
   /**
    * All-args constructor.
-   * @param seatNumber The new value for seatNumber
    * @param trainName The new value for trainName
+   * @param seatNumber The new value for seatNumber
    */
-  public TicketBookedEvent(java.lang.CharSequence seatNumber, java.lang.CharSequence trainName) {
-    this.seatNumber = seatNumber;
+  public TicketBookedEvent(java.lang.CharSequence trainName, java.lang.CharSequence seatNumber) {
     this.trainName = trainName;
+    this.seatNumber = seatNumber;
   }
 
   @Override
@@ -102,8 +102,8 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
   @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return seatNumber;
-    case 1: return trainName;
+    case 0: return trainName;
+    case 1: return seatNumber;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -113,27 +113,10 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: seatNumber = (java.lang.CharSequence)value$; break;
-    case 1: trainName = (java.lang.CharSequence)value$; break;
+    case 0: trainName = (java.lang.CharSequence)value$; break;
+    case 1: seatNumber = (java.lang.CharSequence)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
-  }
-
-  /**
-   * Gets the value of the 'seatNumber' field.
-   * @return The value of the 'seatNumber' field.
-   */
-  public java.lang.CharSequence getSeatNumber() {
-    return seatNumber;
-  }
-
-
-  /**
-   * Sets the value of the 'seatNumber' field.
-   * @param value the value to set.
-   */
-  public void setSeatNumber(java.lang.CharSequence value) {
-    this.seatNumber = value;
   }
 
   /**
@@ -151,6 +134,23 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
    */
   public void setTrainName(java.lang.CharSequence value) {
     this.trainName = value;
+  }
+
+  /**
+   * Gets the value of the 'seatNumber' field.
+   * @return The value of the 'seatNumber' field.
+   */
+  public java.lang.CharSequence getSeatNumber() {
+    return seatNumber;
+  }
+
+
+  /**
+   * Sets the value of the 'seatNumber' field.
+   * @param value the value to set.
+   */
+  public void setSeatNumber(java.lang.CharSequence value) {
+    this.seatNumber = value;
   }
 
   /**
@@ -194,8 +194,8 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<TicketBookedEvent>
     implements org.apache.avro.data.RecordBuilder<TicketBookedEvent> {
 
-    private java.lang.CharSequence seatNumber;
     private java.lang.CharSequence trainName;
+    private java.lang.CharSequence seatNumber;
 
     /** Creates a new Builder */
     private Builder() {
@@ -208,12 +208,12 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
      */
     private Builder(com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.seatNumber)) {
-        this.seatNumber = data().deepCopy(fields()[0].schema(), other.seatNumber);
+      if (isValidValue(fields()[0], other.trainName)) {
+        this.trainName = data().deepCopy(fields()[0].schema(), other.trainName);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
-      if (isValidValue(fields()[1], other.trainName)) {
-        this.trainName = data().deepCopy(fields()[1].schema(), other.trainName);
+      if (isValidValue(fields()[1], other.seatNumber)) {
+        this.seatNumber = data().deepCopy(fields()[1].schema(), other.seatNumber);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
     }
@@ -224,54 +224,14 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
      */
     private Builder(com.hy.ticketkatun.reservation.event.TicketBookedEvent other) {
       super(SCHEMA$, MODEL$);
-      if (isValidValue(fields()[0], other.seatNumber)) {
-        this.seatNumber = data().deepCopy(fields()[0].schema(), other.seatNumber);
+      if (isValidValue(fields()[0], other.trainName)) {
+        this.trainName = data().deepCopy(fields()[0].schema(), other.trainName);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.trainName)) {
-        this.trainName = data().deepCopy(fields()[1].schema(), other.trainName);
+      if (isValidValue(fields()[1], other.seatNumber)) {
+        this.seatNumber = data().deepCopy(fields()[1].schema(), other.seatNumber);
         fieldSetFlags()[1] = true;
       }
-    }
-
-    /**
-      * Gets the value of the 'seatNumber' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getSeatNumber() {
-      return seatNumber;
-    }
-
-
-    /**
-      * Sets the value of the 'seatNumber' field.
-      * @param value The value of 'seatNumber'.
-      * @return This builder.
-      */
-    public com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder setSeatNumber(java.lang.CharSequence value) {
-      validate(fields()[0], value);
-      this.seatNumber = value;
-      fieldSetFlags()[0] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'seatNumber' field has been set.
-      * @return True if the 'seatNumber' field has been set, false otherwise.
-      */
-    public boolean hasSeatNumber() {
-      return fieldSetFlags()[0];
-    }
-
-
-    /**
-      * Clears the value of the 'seatNumber' field.
-      * @return This builder.
-      */
-    public com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder clearSeatNumber() {
-      seatNumber = null;
-      fieldSetFlags()[0] = false;
-      return this;
     }
 
     /**
@@ -289,9 +249,9 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
       * @return This builder.
       */
     public com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder setTrainName(java.lang.CharSequence value) {
-      validate(fields()[1], value);
+      validate(fields()[0], value);
       this.trainName = value;
-      fieldSetFlags()[1] = true;
+      fieldSetFlags()[0] = true;
       return this;
     }
 
@@ -300,7 +260,7 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
       * @return True if the 'trainName' field has been set, false otherwise.
       */
     public boolean hasTrainName() {
-      return fieldSetFlags()[1];
+      return fieldSetFlags()[0];
     }
 
 
@@ -310,6 +270,46 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
       */
     public com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder clearTrainName() {
       trainName = null;
+      fieldSetFlags()[0] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'seatNumber' field.
+      * @return The value.
+      */
+    public java.lang.CharSequence getSeatNumber() {
+      return seatNumber;
+    }
+
+
+    /**
+      * Sets the value of the 'seatNumber' field.
+      * @param value The value of 'seatNumber'.
+      * @return This builder.
+      */
+    public com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder setSeatNumber(java.lang.CharSequence value) {
+      validate(fields()[1], value);
+      this.seatNumber = value;
+      fieldSetFlags()[1] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'seatNumber' field has been set.
+      * @return True if the 'seatNumber' field has been set, false otherwise.
+      */
+    public boolean hasSeatNumber() {
+      return fieldSetFlags()[1];
+    }
+
+
+    /**
+      * Clears the value of the 'seatNumber' field.
+      * @return This builder.
+      */
+    public com.hy.ticketkatun.reservation.event.TicketBookedEvent.Builder clearSeatNumber() {
+      seatNumber = null;
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -319,8 +319,8 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
     public TicketBookedEvent build() {
       try {
         TicketBookedEvent record = new TicketBookedEvent();
-        record.seatNumber = fieldSetFlags()[0] ? this.seatNumber : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.trainName = fieldSetFlags()[1] ? this.trainName : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.trainName = fieldSetFlags()[0] ? this.trainName : (java.lang.CharSequence) defaultValue(fields()[0]);
+        record.seatNumber = fieldSetFlags()[1] ? this.seatNumber : (java.lang.CharSequence) defaultValue(fields()[1]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -353,9 +353,9 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
   @Override public void customEncode(org.apache.avro.io.Encoder out)
     throws java.io.IOException
   {
-    out.writeString(this.seatNumber);
-
     out.writeString(this.trainName);
+
+    out.writeString(this.seatNumber);
 
   }
 
@@ -364,19 +364,19 @@ public class TicketBookedEvent extends org.apache.avro.specific.SpecificRecordBa
   {
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
-      this.seatNumber = in.readString(this.seatNumber instanceof Utf8 ? (Utf8)this.seatNumber : null);
-
       this.trainName = in.readString(this.trainName instanceof Utf8 ? (Utf8)this.trainName : null);
+
+      this.seatNumber = in.readString(this.seatNumber instanceof Utf8 ? (Utf8)this.seatNumber : null);
 
     } else {
       for (int i = 0; i < 2; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
-          this.seatNumber = in.readString(this.seatNumber instanceof Utf8 ? (Utf8)this.seatNumber : null);
+          this.trainName = in.readString(this.trainName instanceof Utf8 ? (Utf8)this.trainName : null);
           break;
 
         case 1:
-          this.trainName = in.readString(this.trainName instanceof Utf8 ? (Utf8)this.trainName : null);
+          this.seatNumber = in.readString(this.seatNumber instanceof Utf8 ? (Utf8)this.seatNumber : null);
           break;
 
         default:

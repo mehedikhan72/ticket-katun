@@ -1,7 +1,7 @@
 {
   "type": "record",
-  "name": "TicketBookedEvent",
-  "namespace": "com.hy.ticketkatun.reservation.event",
+  "name": "BookingCompletedEvent",
+  "namespace": "com.hy.ticketkatun.otp.event",
   "fields": [
     { "name": "trainName", "type": "string" },
     { "name": "seatNumber", "type": "string" }
