@@ -66,6 +66,9 @@ jobs:
         run: doctl registry login --expiry-seconds 600
       - name: Deploy to kubernetes
         run: doctl kubernetes cluster kubeconfig save ${{ secrets.CLUSTER_ID }}
+        
+      - name: Get present working directory
+        run: pwd
 
       - name: Apply Deployment YAML
         run: |
