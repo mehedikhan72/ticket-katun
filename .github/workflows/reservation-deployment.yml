@@ -71,10 +71,9 @@ jobs:
         run: doctl kubernetes cluster kubeconfig save ${{ secrets.CLUSTER_ID }}
 
       - name: Apply Deployment YAML
-        run: |
+        run: kubectl apply -f k8s/manifests/applications/reservation-service.yml
 #          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-reservation-service:'${TAG}'|' k8s/manifests/applications/reservation-service.yml
-          pwd
-          kubectl apply -f k8s/manifests/applications/reservation-service.yml
+
 
       - name: Kubernetes rollout restart
         run: |
