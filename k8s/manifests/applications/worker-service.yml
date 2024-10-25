@@ -17,11 +17,6 @@ spec:
 #          image: registry.digitalocean.com/ticket-katun/tkt-worker-service:${TAG}
           image: registry.digitalocean.com/ticket-katun/tkt-worker-service:5bb8555
           env:
-            - name: LOKI_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: LOKI_URL
-                  name: common-config
             - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
               valueFrom:
                 configMapKeyRef:
