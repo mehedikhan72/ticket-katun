@@ -115,12 +115,12 @@ services:
       - loki
       - postgres
 
-  redis-service:
-    build: ./redis-service
-    ports:
-      - "8088:8088"
-    depends_on:
-      - redis
+#  redis-service:
+#    build: ./redis-service
+#    ports:
+#      - "8088:8088"
+#    depends_on:
+#      - redis
 
   postgres:
     image: postgres:latest
@@ -255,13 +255,13 @@ services:
     ports:
       - '3000:3000'
 
-  redis:
-    image: redis:latest
-    restart: always
-    ports:
-      - "6379:6379"
-    environment:
-      - REDIS_PORT=6379
+#  redis:
+#    image: redis:latest
+#    restart: always
+#    ports:
+#      - "6379:6379"
+#    environment:
+#      - REDIS_PORT=6379
 
 volumes:
   postgres_data:

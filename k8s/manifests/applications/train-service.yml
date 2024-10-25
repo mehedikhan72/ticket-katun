@@ -15,7 +15,7 @@ spec:
       containers:
         - name: train-service
 #          image: registry.digitalocean.com/ticket-katun/tkt-train-service:${TAG}
-          image: registry.digitalocean.com/ticket-katun/tkt-train-service:9df6673
+          image: registry.digitalocean.com/ticket-katun/tkt-train-service:5bb8555
           env:
             - name: LOKI_URL
               valueFrom:

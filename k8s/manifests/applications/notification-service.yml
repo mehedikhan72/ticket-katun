@@ -15,7 +15,7 @@ spec:
       containers:
         - name: notification-service
 #          image: registry.digitalocean.com/ticket-katun/tkt-notification-service:${TAG}
-          image: registry.digitalocean.com/ticket-katun/tkt-notification-service:9df6673
+          image: registry.digitalocean.com/ticket-katun/tkt-notification-service:5bb8555
           env:
             - name: SPRING_KAFKA_BOOTSTRAP-SERVERS
               valueFrom:

@@ -12,6 +12,7 @@
 
     <artifactId>worker-service</artifactId>
 
+
     <repositories>
         <repository>
             <id>confluent</id>
