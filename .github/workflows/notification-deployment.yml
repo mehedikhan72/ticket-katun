@@ -3,8 +3,7 @@ name: Notification Deployment
 on:
   push:
     branches: [ master ]
-    paths:
-      - "notification-service/**"
+    paths: [ 'notification-service/**', '.github/workflows/notification-deployment.yml' ]
 
   workflow_dispatch:
     inputs:

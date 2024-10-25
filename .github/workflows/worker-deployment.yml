@@ -3,8 +3,7 @@ name: Worker Deployment
 on:
   push:
     branches: [ master ]
-    paths:
-      - "/worker-service/**"
+    paths: [ 'worker-service/**', '.github/workflows/worker-deployment.yml' ]
 
   workflow_dispatch:
     inputs:
@@ -59,7 +58,7 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v4
-        
+
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
@@ -67,7 +66,7 @@ jobs:
 
       - name: Log in to DigitalOcean Container Registry with short-lived credentials
         run: doctl registry login --expiry-seconds 600
-        
+
       - name: Deploy to kubernetes
         run: doctl kubernetes cluster kubeconfig save ${{ secrets.CLUSTER_ID }}
 
