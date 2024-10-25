@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: payment-service
-          image: shakshor/tkt-payment-service:latest
+          image: registry.digitalocean.com/ticket-katun/tkt-payment-service:${TAG}
           env:
             - name: SPRING_KAFKA_BOOTSTRAP-SERVERS
               valueFrom:
