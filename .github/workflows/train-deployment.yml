@@ -1,4 +1,4 @@
-name: Gateway Deployment
+name: Train Deployment
 
 on:
   push:
