@@ -115,6 +115,13 @@ services:
       - loki
       - postgres
 
+  redis-service:
+    build: ./redis-service
+    ports:
+      - "8088:8088"
+    depends_on:
+      - redis
+
   postgres:
     image: postgres:latest
     container_name: postgress_db
@@ -247,6 +254,14 @@ services:
       - GF_AUTH_DISABLE_LOGIN_FORM=true
     ports:
       - '3000:3000'
+
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_PORT=6379
 
 volumes:
   postgres_data:

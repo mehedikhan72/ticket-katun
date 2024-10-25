@@ -7,3 +7,6 @@
 **/target/**
 
 ticket-katun-cluster-kubeconfig.yaml
+
+redis-client/node_modules
+redis-client/node_modules/**
