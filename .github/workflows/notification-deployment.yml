@@ -69,6 +69,9 @@ jobs:
         
       - name: Get present working directory
         run: pwd
+        
+      - name: printing ls
+        run: ls
 
       - name: Apply Deployment YAML
         run: |
