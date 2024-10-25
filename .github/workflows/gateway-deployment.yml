@@ -71,7 +71,7 @@ jobs:
         run: doctl kubernetes cluster kubeconfig save ${{ secrets.CLUSTER_ID }}
 
       - name: Apply Deployment YAML
-        run: kubectl apply -f k8s/manifests/applications/api-gateway.yml
+        run: kubectl apply -f k8s/manifests/applications/common-config.yml
 #          sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-gateway-service:'${SHORT_SHA}'|' k8s/manifests/applications/api-gateway.yml
 
 

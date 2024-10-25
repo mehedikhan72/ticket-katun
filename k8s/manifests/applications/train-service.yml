@@ -47,4 +47,4 @@ kind: ConfigMap
 metadata:
   name: train-service-config
 data:
-  SPRING_DATASOURCE_URL: "jdbc:postgresql://postgres.default.svc.cluster.local:5432/ticket-katun"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://ticket-katun-do-user-15328471-0.d.db.ondigitalocean.com:25060/defaultdb?sslmode=require"
