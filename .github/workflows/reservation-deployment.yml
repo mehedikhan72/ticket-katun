@@ -25,31 +25,31 @@ jobs:
           docker system prune -af
           docker volume prune -f
 
-  build_and_push:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the repo
-        uses: actions/checkout@v4
-
-      - name: Build container image
-        run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) reservation-service
-
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-
-      - name: Log in to DigitalOcean Container Registry with short-lived credentials
-        run: doctl registry login --expiry-seconds 600
-
-      - name: Remove all old images
-        run: if [ ! -z "$(doctl registry repository list | grep "$(echo $IMAGE_NAME)")" ]; then doctl registry repository delete-manifest $(echo $IMAGE_NAME) $(doctl registry repository list-tags $(echo $IMAGE_NAME) | grep -o "sha.*") --force; else echo "No repository"; fi
-
-      #      - name: Remove Garbage
-      #        run: doctl registry garbage-collection start pathphindr --force
-
-      - name: Push image to DigitalOcean Container Registry
-        run: docker push $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
+#  build_and_push:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout the repo
+#        uses: actions/checkout@v4
+#
+#      - name: Build container image
+#        run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) reservation-service
+#
+#      - name: Install doctl
+#        uses: digitalocean/action-doctl@v2
+#        with:
+#          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+#
+#      - name: Log in to DigitalOcean Container Registry with short-lived credentials
+#        run: doctl registry login --expiry-seconds 600
+#
+#      - name: Remove all old images
+#        run: if [ ! -z "$(doctl registry repository list | grep "$(echo $IMAGE_NAME)")" ]; then doctl registry repository delete-manifest $(echo $IMAGE_NAME) $(doctl registry repository list-tags $(echo $IMAGE_NAME) | grep -o "sha.*") --force; else echo "No repository"; fi
+#
+#      #      - name: Remove Garbage
+#      #        run: doctl registry garbage-collection start pathphindr --force
+#
+#      - name: Push image to DigitalOcean Container Registry
+#        run: docker push $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
 
   deploy:
     runs-on: ubuntu-latest
@@ -72,8 +72,9 @@ jobs:
 
       - name: Apply Deployment YAML
         run: |
+          TAG=$(echo "${GITHUB_SHA}" | head -c7)
           # Update the image tag in the deployment YAML file
-          sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-reservation-service:'${SHORT_SHA}'|' k8s/manifests/applications/reservation-service.yml
+          sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-reservation-service:'${TAG}'|' k8s/manifests/applications/reservation-service.yml
 
           kubectl apply -f k8s/manifests/applications/reservation-service.yml
 
