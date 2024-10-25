@@ -13,3 +13,4 @@ data:
   NOTIFICATION_SERVICE_URL: "http://notification-service:8084"
   WORKER_SERVICE_URL: "http://worker-service:8087"
   SPRING_KAFKA_BOOTSTRAP-SERVERS: "broker:29092"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://ticket-katun-do-user-15328471-0.d.db.ondigitalocean.com:25060/defaultdb?sslmode=require"
