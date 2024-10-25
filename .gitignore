@@ -5,3 +5,5 @@
 /volume-data/**
 
 **/target/**
+
+ticket-katun-cluster-kubeconfig.yaml
