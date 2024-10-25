@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y maven
 COPY pom.xml ./
 
 # Resolve dependencies
-RUN mvn dependency:resolve
+RUN mvn dependency:go-offline
 
 # Copy source files
 COPY src src
