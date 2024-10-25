@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: registry.digitalocean.com/ticket-katun/tkt-gateway-service:${TAG}
+          image: registry.digitalocean.com/ticket-katun/tkt-gateway-service:4f585df
           ports:
             - containerPort: 9000
           env:
