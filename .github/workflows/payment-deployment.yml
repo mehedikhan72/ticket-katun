@@ -72,10 +72,7 @@ jobs:
 
       - name: Apply Deployment YAML
         run: |
-          TAG=$(echo "${GITHUB_SHA}" | head -c7)
-          
-          # Update the image tag in the deployment YAML file
-          sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-payment-service:'${TAG}'|' k8s/manifests/applications/payment-service.yml
+          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-payment-service:'${TAG}'|' k8s/manifests/applications/payment-service.yml
 
           kubectl apply -f k8s/manifests/applications/payment-service.yml
 

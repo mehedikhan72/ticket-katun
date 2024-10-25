@@ -77,11 +77,7 @@ jobs:
 
       - name: Apply Deployment YAML
         run: |
-          # Extract the first 7 characters of the GitHub SHA
-          TAG=$(echo "${GITHUB_SHA}" | head -c7)
-
-          # updating image tag in yaml file
-          sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-notification-service:'${TAG}'|' k8s/manifests/applications/notification-service.yml
+          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-notification-service:'${TAG}'|' k8s/manifests/applications/notification-service.yml
           
           # Apply the Kubernetes manifest ..
           kubectl apply -f k8s/manifests/applications/notification-service.yml
