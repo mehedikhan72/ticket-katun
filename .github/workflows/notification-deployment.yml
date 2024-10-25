@@ -77,8 +77,9 @@ jobs:
 
       - name: Apply Deployment YAML
         run: |
-          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-train-service:'${TAG}'|' k8s/manifests/applications/notification-service.yml
+#          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-train-service:'${TAG}'|' k8s/manifests/applications/notification-service.yml
           # Apply the Kubernetes manifest ..
+          pwd
           kubectl apply -f k8s/manifests/applications/notification-service.yml
 
 
