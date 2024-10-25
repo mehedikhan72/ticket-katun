@@ -15,7 +15,7 @@ spec:
       containers:
         - name: otp-service
 #          image: registry.digitalocean.com/ticket-katun/tkt-otp-service:${TAG}
-          image: registry.digitalocean.com/ticket-katun/tkt-otp-service:latest
+          image: registry.digitalocean.com/ticket-katun/tkt-otp-service:9df6673
           env:
             - name: SPRING_KAFKA_BOOTSTRAP-SERVERS
               valueFrom:
