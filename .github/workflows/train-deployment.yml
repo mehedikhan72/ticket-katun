@@ -3,7 +3,7 @@ name: Train Deployment
 on:
   push:
     branches: [ master ]
-    paths: [ 'train-service/**', '.github/workflows/train-deployment.yml' ]
+    paths: [ 'train-service/**', '.github/workflows/train-deployment.yml', 'k8s/manifests/applications/train-service.yml' ]
 
   workflow_dispatch:
     inputs:

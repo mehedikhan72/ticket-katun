@@ -3,7 +3,7 @@ name: OTP Deployment
 on:
   push:
     branches: [ master ]
-    paths: [ 'otp-service/**', '.github/workflows/otp-service-deployment.yml' ]
+    paths: [ 'otp-service/**', '.github/workflows/otp-service-deployment.yml', 'k8s/manifests/applications/otp-service.yml' ]
 
   workflow_dispatch:
     inputs:

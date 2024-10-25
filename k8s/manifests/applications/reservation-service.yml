@@ -22,16 +22,6 @@ spec:
                 configMapKeyRef:
                   key: SPRING_KAFKA_BOOTSTRAP-SERVERS
                   name: common-config
-            - name: SPRING_DATASOURCE_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: SPRING_DATASOURCE_URL
-                  name: reservation-service-config
-            - name: LOKI_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: LOKI_URL
-                  name: common-config
             - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
               valueFrom:
                 configMapKeyRef:

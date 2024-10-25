@@ -3,7 +3,7 @@ name: Reservation Deployment
 on:
   push:
     branches: [ master ]
-    paths: [ 'reservation-service/**', '.github/workflows/reservation-deployment.yml' ]
+    paths: [ 'reservation-service/**', '.github/workflows/reservation-deployment.yml', 'k8s/manifests/applications/reservation-service.yml' ]
 
   workflow_dispatch:
     inputs:

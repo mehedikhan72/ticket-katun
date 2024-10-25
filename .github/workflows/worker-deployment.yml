@@ -3,7 +3,7 @@ name: Worker Deployment
 on:
   push:
     branches: [ master ]
-    paths: [ 'worker-service/**', '.github/workflows/worker-deployment.yml' ]
+    paths: [ 'worker-service/**', '.github/workflows/worker-deployment.yml', 'k8s/manifests/applications/worker-service.yml' ]
 
   workflow_dispatch:
     inputs:
