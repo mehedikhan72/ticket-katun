@@ -57,6 +57,9 @@ jobs:
     # needs: build_and_push
 
     steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+           
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
