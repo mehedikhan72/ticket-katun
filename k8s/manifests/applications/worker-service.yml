@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: worker-service
-          image: registry.digitalocean.com/ticket-katun/tkt-worker-service:${TAG}
+#          image: registry.digitalocean.com/ticket-katun/tkt-worker-service:${TAG}
+          image: registry.digitalocean.com/ticket-katun/tkt-worker-service:latest
           env:
             - name: LOKI_URL
               valueFrom:

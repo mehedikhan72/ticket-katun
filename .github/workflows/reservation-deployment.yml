@@ -72,7 +72,7 @@ jobs:
 
       - name: Apply Deployment YAML
         run: |
-          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-reservation-service:'${TAG}'|' k8s/manifests/applications/reservation-service.yml
+#          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-reservation-service:'${TAG}'|' k8s/manifests/applications/reservation-service.yml
 
           kubectl apply -f k8s/manifests/applications/reservation-service.yml
 

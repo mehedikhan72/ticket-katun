@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: reservation-service
-          image: registry.digitalocean.com/ticket-katun/tkt-reservation-service:${TAG}
+#          image: registry.digitalocean.com/ticket-katun/tkt-reservation-service:${TAG}
+          image: registry.digitalocean.com/ticket-katun/tkt-reservation-service:latest
           env:
             - name: SPRING_KAFKA_BOOTSTRAP-SERVERS
               valueFrom:
