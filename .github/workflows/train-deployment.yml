@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Build container image
         run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) train-service
@@ -57,6 +57,9 @@ jobs:
     needs: build_and_push
 
     steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
@@ -71,7 +74,8 @@ jobs:
       - name: Apply Deployment YAML
         run: |
           # Update the image tag in the deployment YAML file
-          sed -i "s|image: .*|image: registry.digitalocean.com/ticket-katun/tkt-train-service:${{ github.sha | head -c7 }}|g" k8s/manifests/applications/train-service.yml
+          sed -i 's|<IMAGE>| registry.digitalocean.com/ticket-katun/tkt-train-service:'${SHORT_SHA}'|' k8s/manifests/applications/train-service.yml
+
           kubectl apply -f k8s/manifests/applications/train-service.yml
 
       - name: Kubernetes rollout restart
